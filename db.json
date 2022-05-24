@@ -1,0 +1,12 @@
+{
+  "clientes": [
+    {
+      "nombre": "maikol",
+      "empresa": "Frutas el Flaco",
+      "email": "maiko@miakol.com",
+      "telefono": "414651351351",
+      "notas": "Ya se viene lo chido",
+      "id": 1
+    }
+  ]
+}

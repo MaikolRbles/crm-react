@@ -10,11 +10,35 @@ const Formulario = () => {
                         .min(3, 'El Nombre es muy Corto')
                         .max(20, 'El Nombre es muy Largo')
                         .required("El Nombre del Cliente es Obligatorio"),
-
+            empresa: yup.string()
+                        .required('El Empresa del Cliente es Obligatorio'),
+            email: yup.string()
+                        .email('Email No Valido')
+                        .required('El Email del Cliente es Obligatorio'),
+            telefono: yup.number()
+                        .positive('Numero No valido')
+                        .integer('Numero No valido') 
+                        .typeError('El Numero no es Valido')                       
     })
 
-    const handleSudmit = ( valores) => {
-        console.log(valores)
+    const handleSudmit = async ( valores) => {
+        try {
+            const url = 'http://localhost:4000/clientes'
+
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(valores),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+            console.log()
+            const resultado = await respuesta.json()
+            console.log(resultado)
+
+        } catch (error) {
+            console.log(error)
+        }
     }
   return (
     <div className='bg-white mt-10 px-5 py-5 rounded-md shadow-md md:w-3/4 mx-auto'>
@@ -69,6 +93,9 @@ const Formulario = () => {
                         placeholder='Empresa del Cliente'
                         name='empresa'
                     />
+                     {errors.empresa && touched.empresa ? (
+                        <Alerta>{errors.empresa}</Alerta>
+                    ): null }
             </div>
             <div className='mb-4'>
                 <label 
@@ -82,6 +109,10 @@ const Formulario = () => {
                         placeholder='Email del Cliente'
                         name='email'
                     />
+                    {errors.email && touched.email ? (
+                        <Alerta>{errors.email}</Alerta>
+                    ): null }
+                    
             </div>
             <div className='mb-4'>
                 <label 
@@ -95,6 +126,9 @@ const Formulario = () => {
                         placeholder='Telefono del Cliente'
                         name='telefono'
                     />
+                     {errors.telefono && touched.telefono ? (
+                        <Alerta>{errors.telefono}</Alerta>
+                    ): null }                    
             </div>
             <div className='mb-4'>
                 <label 
@@ -113,7 +147,7 @@ const Formulario = () => {
             <input 
                 type='submit'
                 value='Agregar Cliente'
-                className='mt-5 w-full bg-blue-800 p-3 rounded-md text-white uppercase font-bold
+                className='mt-5 w-full bg-green-800 p-3 rounded-md text-white uppercase font-bold
                 text-lg'
 
             />
