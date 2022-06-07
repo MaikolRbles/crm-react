@@ -1,3 +1,28 @@
 {
-  "clientes": []
+  "clientes": [
+    {
+      "nombre": "Juan",
+      "empresa": "mk",
+      "email": "correo@correo.com",
+      "telefono": "51651651",
+      "notas": "mk ",
+      "id": 1
+    },
+    {
+      "nombre": "Maikol",
+      "empresa": "Frutas el Flaco",
+      "email": "correo@correo.com",
+      "telefono": "25651",
+      "notas": "Comercio",
+      "id": 2
+    },
+    {
+      "nombre": "chiki",
+      "empresa": "Prodijio",
+      "email": "correo@correo.com",
+      "telefono": "21561561",
+      "notas": "El capo",
+      "id": 3
+    }
+  ]
 }
